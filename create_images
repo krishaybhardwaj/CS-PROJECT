@@ -1,0 +1,32 @@
+import mysql.connector
+
+# Replace with your own database connection details
+db_config = {
+    "host": "localhost",
+    "user": "root",
+    "password": "krishay",
+    "database": "latecomers"
+}
+
+# Establish the database connection
+connection = mysql.connector.connect(**db_config)
+cursor = connection.cursor()
+
+# SQL query to create the 'images' table
+create_table_query = """
+CREATE TABLE images (
+    Admno INT PRIMARY KEY,
+    picid,
+    pic LONGBLOB
+)
+"""
+
+# Execute the query
+cursor.execute(create_table_query)
+connection.commit()
+
+# Close the cursor and connection
+cursor.close()
+connection.close()
+
+print("Table 'images' created successfully!")
